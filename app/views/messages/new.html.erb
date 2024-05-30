@@ -1,0 +1,20 @@
+<h1>Create a Message</h1>
+
+<%= form_with model: @message, local: true do |form| %>
+  <div>
+    <%= form.label :sender, "From" %>
+    <%= form.text_field :sender %>
+  </div>
+  
+  <div>
+    <%= form.label :receiver, "To" %>
+    <%= form.select :receiver, options_for_select(['恋人', '親友', '家族'], '恋人') %>
+  </div>
+  
+  <div>
+    <%= form.label :content, "Message" %>
+    <%= form.text_area :content, placeholder: "例: いびきがうるさい" %>
+  </div>
+  
+  <%= form.submit "Create Message" %>
+<% end %>

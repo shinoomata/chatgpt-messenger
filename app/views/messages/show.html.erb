@@ -1,0 +1,8 @@
+<h1>Message Sent</h1>
+
+<p>From: <%= @message.sender %></p>
+<p>To: <%= @message.receiver %></p>
+<p>Message: <%= @message.content %></p>
+
+<h2>Indirect Message</h2>
+<p><%= @message.generated_content %></p>
