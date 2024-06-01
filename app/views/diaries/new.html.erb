@@ -1,0 +1,34 @@
+<h1>新しいメッセージ</h1>
+
+<%= form_with model: @diary, local: true do |form| %>
+  <% if @diary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@diary.errors.count, "error") %> prohibited this diary from being saved:</h2>
+
+      <ul>
+        <% @diary.errors.full_diarys.each do |diary| %>
+          <li><%= diary %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_name %>
+    <%= form.text_field :user_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :style %>
+    <%= form.select :style, options_for_select(['ギャル風', '丁寧語', '砕けた口調','おじさん構文','詩的なスタイル', '古風なスタイル', 'ビジネス風', 'ライトノベル風', '関西弁', '沖縄弁', 'メイドカフェの店員風', 'SF風', 'ホラー風', 'ファンタジー風', 'ポエム風', 'ドラマティック風','ツンデレ風'], selected: 'ギャル風') %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Create diary' %>
+  </div>
+<% end %>

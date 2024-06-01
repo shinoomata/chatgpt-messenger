@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :messages, only: [:new, :create, :show]
-  root 'messages#new'
-  get 'messages/new'
-  get 'messages/create'
-  get 'messages/show'
+  resources :diaries, only: [:new, :create, :show]
+  root 'diaries#new'
+  get 'diaries/new'
+  get 'diaries/create'
+  get 'diaries/show'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

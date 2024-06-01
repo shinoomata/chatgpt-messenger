@@ -10,15 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_30_062405) do
-  create_table "messages", force: :cascade do |t|
-    t.string "sender"
-    t.string "receiver"
+ActiveRecord::Schema[7.0].define(version: 2024_06_01_125137) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "diaries", force: :cascade do |t|
     t.text "content"
     t.text "indirect_message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "generated_content"
+    t.string "user_name"
+    t.string "style"
   end
 
 end

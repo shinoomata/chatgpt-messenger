@@ -1,0 +1,8 @@
+<h1>日記</h1>
+
+<p><strong>ユーザー名:</strong> <%= @diary.user_name %></p>
+<p><strong>元の内容:</strong> <%= @diary.content %></p>
+<p><strong>スタイル:</strong> <%= @diary.style %></p>
+<p><strong>変更された日記:</strong> <%= @diary.generated_content %></p>
+
+<%= link_to '新しい日記を作成', new_diary_path %>
