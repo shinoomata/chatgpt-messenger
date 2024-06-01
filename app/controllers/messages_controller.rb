@@ -1,4 +1,3 @@
-# app/controllers/messages_controller.rb
 class MessagesController < ApplicationController
   def new
     @message = Message.new
@@ -9,13 +8,26 @@ class MessagesController < ApplicationController
     if @message.save
       prompt = "次のメッセージをTO（#{@message.receiver}）に遠回しに日本語で伝えてください: #{@message.content}"
       openai_service = OpenaiService.new
-      generated_content = openai_service.generate_indirect_message(prompt)
-      Rails.logger.info "Generated content: #{generated_content}"
-      @message.generated_content = generated_content
-      @message.save
-      redirect_to @message, notice: 'Message was successfully created.'
+
+      begin
+        generated_content = openai_service.generate_indirect_message(prompt)
+        Rails.logger.info "Generated content: #{generated_content}"
+        @message.generated_content = generated_content
+
+        if @message.save
+          redirect_to @message, notice: 'Message was successfully created.'
+        else
+          flash.now[:alert] = 'Message was created but failed to save generated content.'
+          render :new
+        end
+      rescue => e
+        Rails.logger.error "Failed to generate content: #{e.message}"
+        flash.now[:alert] = "Failed to generate content: #{e.message}"
+        render :new
+      end
     else
-      render :new, notice: 'Message was not created.'
+      flash.now[:alert] = 'Message was not created.'
+      render :new
     end
   end
 

@@ -37,3 +37,6 @@
 
 .DS_Store
 /vendor/bundle
+
+echo 'config/master.key' >> .gitignore
+echo 'config/credentials.yml.enc' >> .gitignore
