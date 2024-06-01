@@ -10,19 +10,6 @@ services:
         fromDatabase:
           name: chatGPT-messenger.db
           property: connectionString
-      - key: DATABASE_USERNAME
-        fromDatabase:
-          name: your-database-name
-          property: user
-      - key: DATABASE_PASSWORD
-        fromDatabase:
-          name: your-database-name
-          property: password
-      - key: DATABASE_HOST
-        fromDatabase:
-          name: your-database-name
-          property: host
-      - key: DATABASE_NAME
-        fromDatabase:
-          name: your-database-name
-          property: database
+      - key: RAILS_MASTER_KEY
+        sync: false
+    autoDeploy: false
