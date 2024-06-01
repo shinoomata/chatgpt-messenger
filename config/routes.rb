@@ -8,5 +8,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  if Rails.env.production?
+    namespace :admin do
+      resources :migrations, only: [:index]
+    end
+  end
 end
 
