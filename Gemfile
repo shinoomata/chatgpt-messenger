@@ -76,3 +76,6 @@ gem "dotenv-rails", "~> 3.1"
 gem "ruby-openai"
 
 gem 'openai'
+
+gem 'pg'
+
