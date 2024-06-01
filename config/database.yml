@@ -1,24 +1,21 @@
 default: &default
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOST'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
 
 development:
   <<: *default
-  adapter: postgresql
-  username: root
-  password:
-  host: localhost
   database: ajax_app_development
 
 test:
   <<: *default
-  adapter: postgresql
-  username: root
-  password:
-  host: localhost
   database: ajax_app_test
 
 production:
   <<: *default
-  adapter: postgresql
+  database: ajax_app_production
   url: <%= ENV['DATABASE_URL'] %>
