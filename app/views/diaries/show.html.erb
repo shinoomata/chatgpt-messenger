@@ -1,8 +1,26 @@
-<h1>日記</h1>
+<h1>Postを考えたよ！</h1>
 
 <p><strong>ユーザー名:</strong> <%= @diary.user_name %></p>
 <p><strong>元の内容:</strong> <%= @diary.content %></p>
 <p><strong>スタイル:</strong> <%= @diary.style %></p>
 <p><strong>変更された日記:</strong> <%= @diary.generated_content %></p>
 
-<%= link_to '新しい日記を作成', new_diary_path %>
+<!-- Twitterシェアボタン -->
+<a href="https://twitter.com/share" class="twitter-share-button"
+  data-text="<%= @diary.generated_content %>"
+  data-url="https://chatgpt-messenger-2.onrender.com/"
+  data-lang="ja"
+  data-show-count="false">Tweet</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<!-- Twitterシェアボタン -->
+<a href="https://twitter.com/intent/tweet?text=<%= @diary.generated_content.truncate(100) %>&url=https://chatgpt-messenger-2.onrender.com/" target="_blank" class="twitter-share-button">Post代行</a>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<%= link_to '新たなpostを作成', new_diary_path %>
+
+<!-- 画像表示 -->
+<div class="image-container" style="text-align:left; margin-top:20px;">
+  <%= image_tag 'thinking.png', alt: 'Thinking Hamster', style: 'width:40%; height:auto;' %>
+</div>
