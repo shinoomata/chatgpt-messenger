@@ -1,8 +1,8 @@
+<div class="centered-text">
 <h1>Post代行</h1>
 <p>〜面倒くさがりの君たちへ〜</p>
-
 <p>ChatGPTがあなたの代わりにXのポストを考えてくれます。</p>
-
+</div>
 
 <%= form_with model: @diary, local: true , html: { class: 'centered-form' } do |form| %>
   <% if @diary.errors.any? %>
@@ -38,6 +38,6 @@
 <% end %>
 
 <!-- 画像表示 -->
-<div class="image-container" style="text-align:center; margin-top:100px;">
-<%= image_tag 'lazyham.webp', alt: 'Lazy golden hamster', style: 'width:40%; height:auto;'%>
+<div class="image-container" style="text-align:center; margin-top:50px;">
+<%= image_tag 'lazyham.png', alt: 'Lazy golden hamster', style: 'width:40%; height:auto;'%>
 

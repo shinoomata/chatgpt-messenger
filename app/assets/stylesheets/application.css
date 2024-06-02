@@ -23,3 +23,16 @@ form.centered-form {
     display: block;
     width: 100%;
   }
+
+  .centered-text {
+    text-align: center;
+  }
+  
+
+  body {
+    background-image: url('flower.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }

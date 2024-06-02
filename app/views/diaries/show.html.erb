@@ -1,5 +1,6 @@
+<div class="centered-text">
 <h1>Postを考えたよ！</h1>
-
+</div>
 <p><strong>ユーザー名:</strong> <%= @diary.user_name %></p>
 <p><strong>元の内容:</strong> <%= @diary.content %></p>
 <p><strong>スタイル:</strong> <%= @diary.style %></p>
@@ -21,6 +22,6 @@
 <%= link_to '新たなpostを作成', new_diary_path %>
 
 <!-- 画像表示 -->
-<div class="image-container" style="text-align:left; margin-top:20px;">
+<div class="image-container" style="text-align:center; margin-top:20px;">
   <%= image_tag 'thinking.png', alt: 'Thinking Hamster', style: 'width:40%; height:auto;' %>
 </div>
