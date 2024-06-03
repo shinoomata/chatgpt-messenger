@@ -1,27 +1,30 @@
 <div class="centered-text">
-<h1>Postを考えたよ！</h1>
-</div>
-<p><strong>ユーザー名:</strong> <%= @diary.user_name %></p>
-<p><strong>元の内容:</strong> <%= @diary.content %></p>
-<p><strong>スタイル:</strong> <%= @diary.style %></p>
-<p><strong>変更された日記:</strong> <%= @diary.generated_content %></p>
+  <h1>Postを考えたよ!</h1>
 
-<!-- Twitterシェアボタン -->
-<a href="https://twitter.com/share" class="twitter-share-button"
-  data-text="<%= @diary.generated_content %>"
-  data-url="https://chatgpt-messenger-2.onrender.com/"
-  data-lang="ja"
-  data-show-count="false">Tweet</a>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <p><strong>ユーザー名</strong></p>
+  <p><%= @diary.user_name %></p>
 
-<!-- Twitterシェアボタン -->
-<a href="https://twitter.com/intent/tweet?text=<%= @diary.generated_content.truncate(100) %>&url=https://chatgpt-messenger-2.onrender.com/" target="_blank" class="twitter-share-button">Post代行</a>
+  <p><strong>スタイル</strong></p>
+  <p><%= @diary.style %></p>
 
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <!-- 目立たせるための内容 -->
+  <div class="highlighted-content" style="font-size: 1.0em; font-weight: bold; margin-top: 20px; margin-bottom: 20px; max-width: 50%; margin-left: auto; margin-right: auto;">
+    <p><strong>内容</strong></p>
+    <p><%= @diary.generated_content %></p>
+  </div>
 
-<%= link_to '新たなpostを作成', new_diary_path %>
+  <!-- Twitterシェアボタン -->
+  <a href="https://twitter.com/intent/tweet?text=<%= @diary.generated_content.truncate(100) %>&url=https://chatgpt-messenger-2.onrender.com/" target="_blank" class="twitter-share-button">Post代行</a>
 
-<!-- 画像表示 -->
-<div class="image-container" style="text-align:center; margin-top:20px;">
-  <%= image_tag 'thinking.png', alt: 'Thinking Hamster', style: 'width:40%; height:auto;' %>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  <!-- 新たなpostを作成リンクを一行下げる -->
+  <div style="margin-top: 20px;">
+    <%= link_to '新たなpostを作成', new_diary_path %>
+  </div>
+
+  <!-- 画像表示 -->
+  <div class="image-container" style="text-align:center; margin-top:20px;">
+    <%= image_tag 'thinking.png', alt: 'Thinking Hamster', style: 'width:30%; height:auto;' %>
+  </div>
 </div>

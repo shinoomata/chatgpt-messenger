@@ -10,7 +10,7 @@
       <h2><%= pluralize(@diary.errors.count, "error") %> prohibited this diary from being saved:</h2>
 
       <ul>
-        <% @diary.errors.full_diarys.each do |diary| %>
+        <% @diary.errors.full_messages.each do |diary| %>
           <li><%= diary %></li>
         <% end %>
       </ul>
@@ -24,12 +24,12 @@
 
   <div class="field">
     <%= form.label :content %>
-    <%= form.text_area :content, placeholder: '今日の出来事や気分を教えてね'%>
+    <%= form.text_area :content, placeholder: '今日の出来事や気分を教えてね', maxlength: 200 %>
   </div>
 
   <div class="field">
     <%= form.label :style %>
-    <%= form.select :style, options_for_select(['ギャル風', '丁寧語', '砕けた口調','おじさん構文','詩的なスタイル', '古風なスタイル', 'ビジネス風', 'ライトノベル風', '関西弁', '沖縄弁', 'メイドカフェの店員風', 'SF風', 'ホラー風', 'ファンタジー風', 'ポエム風', 'ドラマティック風','ツンデレ風'], selected: 'ギャル風'), { size: 10 }%>
+    <%= form.select :style, options_for_select(['ギャル風','おじさん構文', '古風なスタイル', 'ビジネス風', 'ライトノベル風', '関西弁', '沖縄弁', 'メイドカフェの店員風', 'SF風', 'ホラー風', 'ファンタジー風', 'ポエム風', 'ドラマティック風','ツンデレ風'], selected: 'ギャル風'), { size: 10 }%>
   </div>
 
   <div class="actions">
