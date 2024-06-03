@@ -1,3 +1,3 @@
 class Diary < ApplicationRecord
-    validates :content, length: { maximum: 200 }, presence: true
+    validates :content, presence: { daiary: "入力してください" }, length: { maximum: 200 }, presence: true
 end
