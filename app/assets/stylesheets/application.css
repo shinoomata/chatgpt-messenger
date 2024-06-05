@@ -39,3 +39,58 @@ form.centered-form {
     background-repeat: no-repeat;
     background-attachment: fixed;
   }
+
+  /* ボタン共通スタイル */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: background-color 0.3s, color 0.3s;
+  border: none; /* button_toを使用しているため、borderを設定します */
+  cursor: pointer; /* カーソルがポインタになるように設定 */
+}
+
+/* ログインボタンスタイル */
+.btn-login {
+  background-color: #1DA1F2; /* Twitterの青色 */
+  color: white;
+}
+
+.btn-login:hover {
+  background-color: white;
+  color: #1DA1F2;
+  border: 2px solid #1DA1F2;
+}
+
+/* ログアウトボタンスタイル */
+.btn-logout {
+  background-color: #E0245E; /* 赤色 */
+  color: white;
+}
+
+.btn-logout:hover {
+  background-color: white;
+  color: #E0245E;
+  border: 2px solid #E0245E;
+}
+
+/* ナビゲーションバーのスタイル */
+.navbar {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background-color: #f8f9fa;
+}
+
+/* 中央にテキストを配置 */
+.centered-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 画面の高さ全体に対応 */
+}

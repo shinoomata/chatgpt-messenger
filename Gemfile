@@ -79,3 +79,6 @@ gem 'openai'
 
 gem 'pg'
 
+gem 'omniauth'
+gem 'omniauth-twitter2'
+gem 'omniauth-rails_csrf_protection'

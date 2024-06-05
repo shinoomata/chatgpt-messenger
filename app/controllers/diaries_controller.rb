@@ -1,10 +1,15 @@
 class DiariesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_diary, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_owner!, only: [:show, :edit, :update, :destroy]
+
   def new
     @diary = Diary.new
   end
 
   def create
     @diary = Diary.new(diary_params)
+    @diary.user = current_user
     @diary.user_name = '名無し' if @diary.user_name.blank?
 
     if @diary.save
@@ -34,10 +39,17 @@ class DiariesController < ApplicationController
   end
 
   def show
-    @diary = Diary.find(params[:id])
   end
 
   private
+
+  def set_diary
+    @diary = Diary.find(params[:id])
+  end
+
+  def authorize_owner!
+    redirect_to root_path, alert: 'アクセスが許可されていません' unless owner?(@diary)
+  end
 
   def diary_params
     params.require(:diary).permit(:user_name, :content, :style)

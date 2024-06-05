@@ -12,5 +12,19 @@
 
   <body>
     <%= yield %>
+    <div class="navbar">
+      <div class="centered-text">
+          <% if user_signed_in? %>
+          <%= button_to "ログアウト", logout_path, method: :delete, 
+          data: { turbo_confirm: "ログアウトしますか?" }, class: "btn btn-logout" %>
+          <% else %>
+          <%= button_to "Xでログイン", "/auth/twitter2", method: :post,
+          data: { turbo: false }, class: "btn btn-login" %>
+          <% end %>
+      </div>
+    </div>
+
   </body>
+
+  
 </html>

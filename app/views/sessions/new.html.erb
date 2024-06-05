@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ChatGPT Messenger</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+</head>
+<body>
+  <h1>ログイン</h1>
+  <%= button_to "Sign in", auth_twitter2_path, method: :post, data: { turbo: false }  %>
+
+  <% if user_signed_in? %>
+  <%= link_to "Sign out", "/sign_out",
+    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+<% else %>
+  <%= button_to "Sign in", "/auth/twitter2", method: :post,
+    data: { turbo: false } %>
+<% end %>
+</body>
+</html>
