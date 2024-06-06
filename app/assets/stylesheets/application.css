@@ -26,19 +26,23 @@ form.centered-form {
     height: 100px;
   }
 
-  .centered-text {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-
   body {
-    background-image: url('flower.png');
+    background-image: url('yellow.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
   }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
 
   /* ボタン共通スタイル */
 .btn {
@@ -79,9 +83,18 @@ form.centered-form {
   border: 2px solid #E0245E;
 }
 
+.container {
+  text-align: center;
+  width: 100%;
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 /* ナビゲーションバーのスタイル */
 .navbar {
-  display: flex;
   justify-content: center;
   padding: 10px;
   background-color: #f8f9fa;
@@ -89,8 +102,48 @@ form.centered-form {
 
 /* 中央にテキストを配置 */
 .centered-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* 画面の高さ全体に対応 */
+  text-align: center;
+  margin-top: 20px;
 }
+
+/* 投稿アイテムスタイル */
+.post-item {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  width: 80%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.highlighted-content {
+  font-size: 1.0em;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.twitter-share-button {
+  display: block;
+  margin: 20px auto;
+}
+
+.image-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.image-container img {
+  width: 30%;
+  height: auto;
+}
+
+.new-post-link {
+  display: block;
+  margin-top: 20px;
+}
+
