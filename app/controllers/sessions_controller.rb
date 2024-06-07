@@ -8,9 +8,17 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_or_create_from_auth(request.env["omniauth.auth"])
-    session[:user_id] = user.uid
-    redirect_to new_diary_path
+    begin
+      auth_info = request.env["omniauth.auth"]
+      Rails.logger.debug "Auth Info: #{auth_info.inspect}"
+      
+      user = User.find_or_create_from_auth(auth_info)
+      session[:user_id] = user.uid
+      redirect_to new_diary_path, notice: 'ログインに成功しました'
+    rescue => e
+      Rails.logger.error "Authentication error: #{e.message}"
+      redirect_to root_path, alert: 'ログインに失敗しました'
+    end
   end
 
   def destroy
