@@ -6,4 +6,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     scope: "tweet.read users.read"
   end
   
-
+  OmniAuth.config.logger = Rails.logger
+  OmniAuth.config.logger.level = Logger::DEBUG
