@@ -10,45 +10,50 @@
   </head>
 
   <body>
-        <%= image_tag 'title.png', alt: 'Post代行' %>
-
-      <%= form_with model: @diary, local: true , html: { class: 'centered-form' } do |form| %>
-        <% if @diary.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@diary.errors.count, "error") %> prohibited this diary from being saved:</h2>
-
-            <ul>
-              <% @diary.errors.full_messages.each do |diary| %>
-                <li><%= diary %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-
-        <div class="field">
-          <%= form.label :user_name %>
-          <%= form.text_field :user_name, size: 20 %>
-        </div>
-
-        <div class="field">
-          <%= form.label :content %>
-          <%= form.text_area :content, placeholder: '今日の出来事や気分を教えてね', maxlength: 200 %>
-        </div>
-
-        <div class="field">
-          <%= form.label :style %>
-          <%= form.select :style, options_for_select(['ギャル風','おじさん構文', '古風なスタイル', 'ビジネス風', 'ライトノベル風', '関西弁', '沖縄弁', 'メイドカフェの店員風', 'SF風', 'ホラー風', 'ファンタジー風', 'ポエム風', 'ドラマティック風','ツンデレ風'], selected: 'ギャル風'), { size: 10 }%>
-        </div>
-
-        <div class="actions">
-          <%= form.submit '作成' %>
-        </div>
-      <% end %>
-
-      <!-- 画像表示 -->
-      <div class="image-container" style="text-align:center; margin-top:50px;">
-        <%= image_tag 'lazyham.png', alt: 'Lazy golden hamster', style: 'width:40%; height:auto;' %>
-      </div>
+    <div class="container">
+    <h1>Post代行</h1>
+    <div class="title-image-container " %>
+    <%= image_tag 'title.png', alt: 'Post代行' %>
     </div>
-  </body>
+
+  <%= form_with model: @diary, local: true , html: { class: 'centered-form' } do |form| %>
+    <% if @diary.errors.any? %>
+      <div id="error_explanation">
+      <h2><%= pluralize(@diary.errors.count, "error") %>が発生しました:</h2>
+
+        <ul>
+          <% @diary.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :user_name, "ユーザー名" %>
+      <%= form.text_field :user_name, size: 20 %>
+    </div>
+
+    <div class="field">
+      <%= form.label :content, "内容" %>
+      <%= form.text_area :content, placeholder: '今日の出来事や気分を教えてね
+    （1文字以上、200文字以内）', maxlength: 200 %>
+    </div>
+
+    <div class="field">
+      <%= form.label :style, "スタイル" %>
+      <%= form.select :style, options_for_select(['ギャル風','おじさん構文', '古風なスタイル', 'ビジネス風', 'ライトノベル風', '関西弁', '沖縄弁', 'メイドカフェの店員風', 'SF風', 'ホラー風', 'ファンタジー風', 'ポエム風', 'ドラマティック風','ツンデレ風'], selected: 'ギャル風'), { size: 10 }%>
+    </div>
+
+    <div class="actions">
+      <%= form.submit '作成' %>
+    </div>
+  <% end %>
+
+  <!-- 画像表示 -->
+  <div class="image-container">
+    <%= image_tag 'lazyham.png', alt: 'Lazy golden hamster', style: 'width:40%; height:auto;' %>
+  </div>
+</div>
+</body>
 </html>

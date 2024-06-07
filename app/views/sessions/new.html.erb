@@ -12,6 +12,11 @@
 <div class="container">
 <div>
 <%= image_tag 'Post.png', alt: 'Post代行', style: 'width:100%; max-width:800px;' %>
+<% if user_signed_in? %>
+  <div style="margin-top: 20px;">
+    <%= link_to '新規作成', new_diary_path, class: 'btn btn-new-post'  %>
+  </div>
+<% end %>
 </div>
 </div>
 </html>

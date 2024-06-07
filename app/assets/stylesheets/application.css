@@ -40,6 +40,7 @@ form.centered-form {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     flex-direction: column;
   }
   
@@ -83,9 +84,38 @@ form.centered-form {
   border: 2px solid #E0245E;
 }
 
+.btn-new-post {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-new-post:hover {
+  background-color: white;
+  color: #28a745;
+  border: 2px solid #28a745;
+}
+
 .container {
   text-align: center;
   width: 100%;
+}
+
+.title-image-container {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.title-image-container img {
+  max-width: 100%;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px
 }
 
 .image-container img {
@@ -139,7 +169,6 @@ form.centered-form {
 
 .image-container img {
   width: 30%;
-  height: auto;
 }
 
 .new-post-link {

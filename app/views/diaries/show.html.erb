@@ -1,26 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Postを考えたよ!</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    .highlighted-content {
+      font-size: 1.0em;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      max-width: 50%;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: white; /* 背景色を白に設定 */
+      padding: 10px; /* 余白を追加 */
+      border-radius: 5px; /* 角を丸くする */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 影を追加 */
+    }
+
+    .container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
 <div class="centered-text">
   <h1>Postを考えたよ!</h1>
 
   <p><strong>ユーザー名</strong></p>
+  <div class="highlighted-content" style="font-size: 1.0em; font-weight: bold; margin-top: 20px; margin-bottom: 20px; max-width: 50%; margin-left: auto; margin-right: auto;">
   <p><%= @diary.user_name %></p>
+  </div>
 
   <p><strong>スタイル</strong></p>
+  <div class="highlighted-content" style="font-size: 1.0em; font-weight: bold; margin-top: 20px; margin-bottom: 20px; max-width: 50%; margin-left: auto; margin-right: auto;">
   <p><%= @diary.style %></p>
+  </div>
 
   <!-- 目立たせるための内容 -->
-  <div class="highlighted-content" style="font-size: 1.0em; font-weight: bold; margin-top: 20px; margin-bottom: 20px; max-width: 50%; margin-left: auto; margin-right: auto;">
     <p><strong>内容</strong></p>
+    <div class="highlighted-content" style="font-size: 1.0em; font-weight: bold; margin-top: 20px; margin-bottom: 20px; max-width: 50%; margin-left: auto; margin-right: auto;">
     <p><%= @diary.generated_content %></p>
   </div>
 
   <!-- Twitterシェアボタン -->
-  <a href="https://twitter.com/intent/tweet?text=<%= @diary.generated_content.truncate(100) %>&url=https://chatgpt-messenger-2.onrender.com/" target="_blank" class="twitter-share-button">Post</a>
+  <a href="https://twitter.com/intent/tweet?text=<%= @diary.generated_content.truncate(100) %>&url=https://chatgpt-messenger-2.onrender.com/" target="_blank" class="twitter-share-button">post</a>
 
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
   <!-- 新たなpostを作成リンクを一行下げる -->
   <div style="margin-top: 20px;">
-    <%= link_to '新たなpostを作成', new_diary_path %>
+    <%= link_to '新規作成', new_diary_path, class: 'btn btn-new-post'  %>
   </div>
 
   <!-- 画像表示 -->
@@ -28,3 +73,5 @@
     <%= image_tag 'thinking.png', alt: 'Thinking Hamster', style: 'width:30%; height:auto;' %>
   </div>
 </div>
+</body>
+</html>

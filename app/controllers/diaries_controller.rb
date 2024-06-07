@@ -8,6 +8,14 @@ class DiariesController < ApplicationController
   end
 
   def create
+    # 今日の投稿数をチェック
+    if Diary.created_today(current_user).count >= 5
+      @diary = Diary.new(diary_params)
+      flash[:alert] = '1日に投稿できるのは5個までです。'
+      render :new
+      return
+    end
+
     @diary = Diary.new(diary_params)
     @diary.user = current_user
     @diary.user_name = '名無し' if @diary.user_name.blank?
@@ -24,16 +32,15 @@ class DiariesController < ApplicationController
         if @diary.save
           redirect_to @diary, notice: 'diary was successfully created.'
         else
-          flash.now[:alert] = 'diary was created but failed to save generated content.'
+          flash[:alert] = 'diary was created but failed to save generated content.'
           render :new
         end
       rescue => e
         Rails.logger.error "Failed to generate content: #{e.diary}"
-        flash.now[:alert] = "Failed to generate content: #{e.diary}"
+        flash[:alert] = "Failed to generate content: #{e.diary}"
         render :new
       end
     else
-      flash.now[:alert] = 'diary was not created.'
       render :new
     end
   end
