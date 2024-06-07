@@ -8,11 +8,15 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <!-- OGP meta tags -->
-    <meta property="og:title" content="Post代行 - 面倒くさがりの君へ">
+    <meta property="og:title" content="Post代行 ~ 面倒くさがりの君へ ~">
     <meta property="og:description" content="ChatGPTがあなたの代わりにXのポストを考えてくれます。">
     <meta property="og:image" content="<%= asset_path 'Post.png' %>">
     <meta property="og:url" content="https://chatgpt-messenger-2.onrender.com/">
     <meta property="og:type" content="website">
+
+    <link rel="icon" href="<%= asset_path 'favicon.ico' %>">
+
+
     <style>
       html, body {
         height: 100%;
