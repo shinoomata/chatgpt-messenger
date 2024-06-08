@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
   def new
+    if Rails.env.development?
+      fake_create
+    end
     # ログインページを表示するためのアクション
   end
 
@@ -8,7 +11,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    begin
       auth_info = request.env["omniauth.auth"]
       Rails.logger.debug "Auth Info: #{auth_info.inspect}"
       
@@ -19,6 +21,12 @@ class SessionsController < ApplicationController
       Rails.logger.error "Authentication error: #{e.message}"
       redirect_to root_path, alert: 'ログインに失敗しました'
     end
+
+
+  def fake_create
+    user = User.find_or_create_by(uid: '12345', nickname: 'testuser')
+    session[:user_id] = user.id
+    redirect_to new_diary_path
   end
 
   def destroy

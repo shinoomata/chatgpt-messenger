@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/failure', to: 'sessions#failure'
   delete '/logout', to: 'sessions#destroy'
-  post '/auth/twitter2', to: 'sessions#auth_twitter2', as: 'auth_twitter2'
+  post '/auth/twitter2', to: 'sessions#auth_twitter2', as: 'auth_twitter2' # 追加
 
   # Defines the root path route ("/")
   # root "articles#index"
@@ -20,4 +20,3 @@ Rails.application.routes.draw do
     end
   end
 end
-
