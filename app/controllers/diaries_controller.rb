@@ -30,7 +30,7 @@ class DiariesController < ApplicationController
         @diary.generated_content = generated_content
 
         if @diary.save
-          redirect_to @diary, notice: 'diary was successfully created.'
+          redirect_to @diary
         else
           flash[:alert] = 'diary was created but failed to save generated content.'
           render :new
