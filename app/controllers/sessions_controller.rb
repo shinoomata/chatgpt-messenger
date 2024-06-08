@@ -1,10 +1,5 @@
 class SessionsController < ApplicationController
   def new
-    if Rails.env.development?&& !session[:user_id]
-      fake_create
-    else
-      render :new
-    end
     # ログインページを表示するためのアクション
   end
 
@@ -16,14 +11,7 @@ class SessionsController < ApplicationController
       auth_info = request.env["omniauth.auth"]
       Rails.logger.debug "Auth Info: #{auth_info.inspect}"
 
-      user = User.find_or_create_by(uid: auth_info['uid'], provider: auth_info['provider']) do |u|
-        u.name = auth_info['info']['name']
-        u.nickname = auth_info['info']['nickname']
-        u.image = auth_info['info']['image']
-        u.token = auth_info['credentials']['token']
-        u.secret = auth_info['credentials']['secret']
-      end
-      
+      user = User.find_or_create_from_auth(auth_info)
       session[:user_id] = user.uid
       redirect_to new_diary_path, notice: 'ログインに成功しました'
     rescue => e
