@@ -21,7 +21,7 @@ class DiariesController < ApplicationController
     @diary.user_name = '名無し' if @diary.user_name.blank?
 
     if @diary.save
-      prompt = "120字、#{@diary.user_name}が主人公で冒頭に挨拶、#{@diary.content}を#{@diary.style}に言い換えて出力。"
+      prompt = "#{@diary.user_name}が主人公で冒頭に挨拶、#{@diary.content}を#{@diary.style}に言い換えて、120文字以内で出力してください。"
       openai_service = OpenaiService.new
 
       begin
