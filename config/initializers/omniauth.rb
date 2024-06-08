@@ -1,3 +1,9 @@
+OmniAuth.config.request_validation_phase = proc do |env|
+  unless env['rack.session'] && env['rack.session']['csrf']
+    fail OmniAuth::Strategies::OAuth2::CallbackError.new(:csrf_detected, 'CSRF detected')
+  end
+end
+
 Rails.application.config.middleware.use OmniAuth::Builder do
   if Rails.env.production?
   provider :twitter2,

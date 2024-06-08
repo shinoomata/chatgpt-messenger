@@ -5,6 +5,8 @@ require "rails/all"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+# app/controllers/application_controller.rb
+protect_from_forgery except: :auth_twitter2
 
 module Postdaiko
   class Application < Rails::Application
