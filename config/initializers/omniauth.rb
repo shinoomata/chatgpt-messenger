@@ -1,5 +1,10 @@
+OmniAuth.config.allowed_request_methods = [:post, :get]
+OmniAuth.config.silence_get_warning = true
+
 OmniAuth.config.request_validation_phase = proc do |env|
-  unless env['rack.session'] && env['rack.session']['csrf']
+  Rails.logger.debug "CSRF Session: #{env['rack.session']['_csrf_token']}"
+  Rails.logger.debug "CSRF Params: #{env['rack.request.query_hash']['state']}"
+  unless env['rack.session'] && env['rack.session']['_csrf_token'] == env['rack.request.query_hash']['state']
     fail OmniAuth::Strategies::OAuth2::CallbackError.new(:csrf_detected, 'CSRF detected')
   end
 end
