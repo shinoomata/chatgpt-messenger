@@ -8,4 +8,4 @@ end
 
 OmniAuth.config.logger = Rails.logger
 OmniAuth.config.logger.level = Logger::DEBUG
-
+OmniAuth.config.allowed_request_methods = [:post, :get]
