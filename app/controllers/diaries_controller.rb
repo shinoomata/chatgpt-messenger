@@ -17,7 +17,7 @@ class DiariesController < ApplicationController
     end
 
     @diary = Diary.new(diary_params)
-    @diary.user = Rails.env.production? ? current_user : User.first # 開発時に最初のユーザーを設定
+    @diary.user = current_user
     @diary.user_name = '名無し' if @diary.user_name.blank?
 
     if @diary.save

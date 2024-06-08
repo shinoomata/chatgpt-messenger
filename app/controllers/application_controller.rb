@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, unless: -> { Rails.env.development? }  
-  helper_method :current_user, :user_signed_in?, :owner?
+    helper_method :current_user, :user_signed_in?, :owner?
 
   private
 

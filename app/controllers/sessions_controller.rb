@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
   def new
-    # ログインページを表示するためのアクション
+    if Rails.env.development? && !session[:user_id]
+      fake_create
+    else
+      # ログインページを表示するためのアクション
+    end
   end
 
   def auth_twitter2
@@ -28,5 +32,13 @@ class SessionsController < ApplicationController
 
   def failure
     redirect_to root_path, alert: 'ログインに失敗しました'
+  end
+
+  private
+
+  def fake_create
+    user = User.find_or_create_by(uid: '12345', nickname: 'testuser')
+    session[:user_id] = user.id
+    redirect_to new_diary_path
   end
 end

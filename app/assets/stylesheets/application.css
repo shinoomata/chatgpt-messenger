@@ -105,17 +105,12 @@ form.centered-form {
 .container {
   text-align: center;
   width: 100%;
-  overflow: auto;
 }
 
 .title-image-container {
-  display: block;
-  justify-content: center;
-  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 20px;
   margin-top: 20px;
-  margin: 0 auto;
-  width: 50%;
-  height: auto;
 }
 
 .title-image-container img {
@@ -125,6 +120,7 @@ form.centered-form {
 .image-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
   margin-top: 20px
 }
@@ -182,7 +178,7 @@ form.centered-form {
 
 .image-container {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .image-container img {
