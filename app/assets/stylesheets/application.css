@@ -162,8 +162,22 @@ form.centered-form {
 }
 
 .twitter-share-button {
+  display: inline-block;
+  font-size: 1.5em; /* フォントサイズを大きくします */
+  padding: 10px 20px; /* ボタンの内側の余白を調整します */
+  background-color: #080808; /* ボタンの背景色をTwitterの青色にします */
+  color: white; /* テキストの色を白にします */
+  border-radius: 25px; /* ボタンの角を丸くします */
+  text-decoration: none; /* テキストの下線を削除します */
+  transition: background-color 0.3s, color 0.3s;
   display: block;
   margin: 20px auto;
+  border: none; /* ボーダーを削除します */
+  cursor: pointer; /* カーソルがポインタになるように設定 */
+}
+
+.twitter-share-button:hover {
+  background-color: #4d5153; /* ホバー時の背景色を少し濃くします */
 }
 
 .image-container {
