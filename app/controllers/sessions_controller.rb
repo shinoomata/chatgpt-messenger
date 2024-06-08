@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
     if Rails.env.development?&& !session[:user_id]
       fake_create
     else
+      render :new
     end
     # ログインページを表示するためのアクション
   end

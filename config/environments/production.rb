@@ -91,4 +91,12 @@ Rails.application.configure do
   config.hosts << "chatgpt-messenger-2.onrender.com"
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.middleware.use OmniAuth::Builder do
+    provider :twitter2,
+             ENV['TWITTER_CLIENT_ID'],
+             ENV['TWITTER_CLIENT_SECRET'],
+             callback_path: "/auth/twitter2/callback",
+             scope: "tweet.read users.read"
+  end
 end
