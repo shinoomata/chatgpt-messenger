@@ -4,6 +4,8 @@ class User < ApplicationRecord
     user = find_or_create_by(uid: auth['uid'], provider: auth['provider'])
     user.update(
       name: auth['info']['name'],
+      image: auth['info']['image'],
+      provider: auth['provider']
     )
     user
   end

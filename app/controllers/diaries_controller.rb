@@ -9,9 +9,9 @@ class DiariesController < ApplicationController
 
   def create
     # 今日の投稿数をチェック
-    if Diary.created_today(current_user).count >= 5
+    if Diary.created_today(current_user).count >= 10
       @diary = Diary.new(diary_params)
-      flash[:alert] = '1日に投稿できるのは5個までです。'
+      flash[:alert] = '1日に投稿できるのは10個までです。'
       render :new
       return
     end
@@ -21,7 +21,7 @@ class DiariesController < ApplicationController
     @diary.user_name = '名無し' if @diary.user_name.blank?
 
     if @diary.save
-      prompt = "#{@diary.user_name}が主人公で冒頭に挨拶、#{@diary.content}を#{@diary.style}に言い換えて、120文字以内で出力してください。"
+      prompt = "#{@diary.user_name}が主人公、#{@diary.content}を#{@diary.style}に言い換えて、120文字以内で出力してください。"
       openai_service = OpenaiService.new
 
       begin
@@ -36,8 +36,8 @@ class DiariesController < ApplicationController
           render :new
         end
       rescue => e
-        Rails.logger.error "Failed to generate content: #{e.diary}"
-        flash[:alert] = "Failed to generate content: #{e.diary}"
+        Rails.logger.error "Failed to generate content: #{e.message}"
+        flash[:alert] = "Failed to generate content: #{e.message}"
         render :new
       end
     else
