@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
       Rails.logger.error "Authentication error: #{e.message}"
       redirect_to root_path, alert: 'ログインに失敗しました'
     end
+  end
 
   def destroy
     reset_session
