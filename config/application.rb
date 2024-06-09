@@ -6,8 +6,8 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 # app/controllers/application_controller.rb
-protect_from_forgery except: :auth_twitter2
-protect_from_forgery with: :null_session
+#protect_from_forgery except: :auth_twitter2
+#protect_from_forgery with: :null_session
 module Postdaiko
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

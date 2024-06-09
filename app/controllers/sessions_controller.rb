@@ -1,24 +1,30 @@
 class SessionsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:auth_twitter2, :create]
+  #skip_before_action :verify_authenticity_token, only: [:auth_twitter2, :create]
   def new
     Rails.logger.debug "Session: #{session.to_hash}"
   end
 
-  def auth_twitter2
-    redirect_to '/auth/twitter2'
-  end
 
   def create
-    begin
-      auth_info = request.env["omniauth.auth"]
-      Rails.logger.debug "Auth Info: #{auth_info.inspect}"
+    @diary = Diary.new(diary_params)
+    @diary.user_name = '名無し' if @diary.user_name.blank?
 
-      user = User.find_or_create_from_auth(auth_info)
-      session[:user_id] = user.id
-      redirect_to new_diary_path, notice: 'ログインに成功しました'
-    rescue => e
-      Rails.logger.error "Authentication error: #{e.message}"
-      redirect_to root_path, alert: 'ログインに失敗しました'
+    if @diary.save
+      prompt = "#{@diary.user_name}が主人公、#{@diary.content}を#{@diary.style}にして、80字以上120文字以内で出力してください。"
+      openai_service = OpenaiService.new
+
+      begin
+        generated_content = openai_service.generate_indirect_message(prompt)
+        Rails.logger.info "Generated content: #{generated_content}"
+        @diary.update(generated_content: generated_content)
+        redirect_to @diary, notice: 'Diary was successfully created.'
+      rescue => e
+        Rails.logger.error "Failed to generate content: #{e.message}"
+        flash[:alert] = "Failed to generate content: #{e.message}"
+        render :new
+      end
+    else
+      render :new
     end
   end
 

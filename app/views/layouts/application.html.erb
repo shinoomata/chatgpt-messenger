@@ -80,11 +80,7 @@
     <% end %>
     <%= yield %>
     <div class="centered-text">
-      <% if user_signed_in? %>
-        <%= button_to "ログアウト", logout_path, method: :delete, data: { turbo_confirm: "ログアウトしますか?" }, class: "btn btn-logout" %>
-      <% else %>
-        <%= button_to "Xでログイン", auth_twitter2_path, data: { method: :post, turbo: false }, class: "btn btn-login", remote: true%>
-      <% end %>
+      
     </div>
   </body>
 </html>

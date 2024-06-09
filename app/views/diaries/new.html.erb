@@ -15,7 +15,7 @@
     <%= image_tag 'title.png', alt: 'Post代行' %>
     </div>
 
-  <%= form_with model: @diary, local: true , html: { class: 'centered-form' } do |form| %>
+  <%= form_with model: @diary, local: true , html: { data: { turbo: false }, class: 'centered-form' } do |form| %>
     <% if @diary.errors.any? %>
       <div id="error_explanation">
       <h2><%= pluralize(@diary.errors.count, "error") %>が発生しました:</h2>
