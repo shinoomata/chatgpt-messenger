@@ -83,3 +83,5 @@ gem 'omniauth'
 gem 'omniauth-twitter2'
 gem 'omniauth-rails_csrf_protection'
 gem 'rack-cors'
+
+gem "meta-tags"

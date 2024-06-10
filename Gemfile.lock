@@ -129,6 +129,8 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    meta-tags (2.21.0)
+      actionpack (>= 6.0.0, < 7.2)
     method_source (1.1.0)
     mini_mime (1.1.5)
     minitest (5.23.1)
@@ -284,6 +286,7 @@ DEPENDENCIES
   dotenv-rails (~> 3.1)
   importmap-rails
   jbuilder
+  meta-tags
   omniauth
   omniauth-rails_csrf_protection
   omniauth-twitter2
