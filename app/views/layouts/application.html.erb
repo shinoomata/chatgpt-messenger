@@ -8,6 +8,13 @@
     <%= javascript_importmap_tags %>
     <%= display_meta_tags(default_meta_tags) %>
 
+    <!-- OGP メタタグ -->
+    <meta property="og:title" content="Your Page Title">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:image" content="<%= image_url('post.png') %>">
+    <meta property="og:description" content="Description of your page">
+
 
     <link rel="icon" href="<%= asset_path 'favicon.ico' %>">
 
