@@ -23,5 +23,6 @@ module Postdaiko
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.hosts << 'https://chatgpt-messenger-2.onrender.com'
+    config.assets.paths << Rails.root.join("app", "assets", "images")
   end
 end
